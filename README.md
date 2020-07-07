@@ -1,1 +1,1 @@
-# openViduSwift
+# openVidu Swift
