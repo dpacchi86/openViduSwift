@@ -12,9 +12,9 @@ import WebRTC
 class OpenViduVideoVM {
     
     var session = ""
-    let username = "INSERT_USERNAME"
-    let secret = "INSERT_SECRET"
-    let baseUrl = "INSERT_URL"
+    let username = "OPENVIDUAPP"
+    let secret = "MY_PROT"
+    let baseUrl = "https://cloudlinks.it:4443/api"
         
     var partecipantName = ""
     
@@ -47,21 +47,14 @@ class OpenViduVideoVM {
         connect(url: baseUrl, username: username, password: secret, session: session)
     }
     
-    func connect(withUrl: String) {
-        self.createSocket(url: withUrl)
-        DispatchQueue.main.async {[weak self] in
-            self?.onSocket?(true, nil)
-            let mandatoryConstraints = ["OfferToReceiveAudio": "true", "OfferToReceiveVideo": "true"]
-            let sdpConstraints = RTCMediaConstraints(mandatoryConstraints: mandatoryConstraints, optionalConstraints: nil)
-            self?.peersService.createLocalOffer(mediaConstraints: sdpConstraints);
-        }
-    }
-    
     func connect(url: String, username: String, password: String, session: String) {
         
         OpenViduService.shared.connectTo(url: baseUrl, username: username, password: password, room: session) {[weak self] (token, success, error) in
             
             guard success == true, let token = token else {
+                DispatchQueue.main.async {[weak self] in
+                    self?.onSocket?(false, nil)
+                }
                 return
             }
             
@@ -93,15 +86,7 @@ class OpenViduVideoVM {
         peersService.start()
         addCallBacks()
     }
-    
-    private func createSocket(url: String) {
-        
-        socketService = WebSocketService(openViduURL: url, participantName: partecipantName, peersManager: peersService, basicAuthToken: OpenViduService.shared.basicTokenFor(username: username, password: secret))
-        peersService.webSocketListener = socketService
-        peersService.start()
-        addCallBacks()
-    }
-    
+
     //MARK: - Add callbacks
     
     private func addCallBacks () {

@@ -29,6 +29,8 @@ class WebSocketService: WebSocketDelegate {
     var peersManager: PeersService
     var token: String
     
+    var iceServers = [RTCIceServer]()
+    
     var onSocketConnected : (()->())?
     var onPartecipantsChanged : (([RemoteParticipant])->())?
     var onSocketDisconnected : (()->())?
@@ -45,35 +47,44 @@ class WebSocketService: WebSocketDelegate {
         self.iceCandidatesParams = []
         self.token = openViduToken.token
         self.participants = [String: RemoteParticipant]()
-        
+                
         let request = URLRequest(url: URL(string: self.url)!)
         socket = WebSocket(request: request)
         socket.delegate = self
+        
+        self.createTURNServers(openViduToken: openViduToken)
+
         socket.connect()
+            
     }
-    
-    init(openViduURL: String, participantName: String, peersManager: PeersService, basicAuthToken : String) {
-        
-        let baseUrl = openViduURL.split(separator: "?").first ?? ""
-        self.url = baseUrl.appending("/openvidu?").appending(openViduURL.split(separator: "?").last ?? "")
-        self.sessionName = ""
-        self.participantName = participantName
-        self.peersManager = peersManager
-        self.localPeer = self.peersManager.localPeer
-        self.iceCandidatesParams = []
-        self.token = openViduURL
-        self.participants = [String: RemoteParticipant]()
-        
-        let request = URLRequest(url: URL(string: self.url)!)
-        
-        socket = WebSocket(request: request)
-        socket.delegate = self
-        socket.connect()
-    }
-    
+
     deinit {
         print("Socket Service deallocated")
     }
+    
+    //MARK: - Turn Servers
+    
+    func createTURNServers (openViduToken: OpenViduToken) {
+        
+        let turnServer = openViduToken.getQueryParameter(parameter: "coturnIp")
+        let turnUsername = openViduToken.getQueryParameter(parameter: "turnUsername")
+        let turnCredential = openViduToken.getQueryParameter(parameter: "turnCredential")
+    
+        var iceServers = [RTCIceServer]()
+        
+        let stunServer = RTCIceServer(urlStrings: ["stun:stun.l.google.com:19302"])
+        let iceServer = RTCIceServer(urlStrings: ["stun:" + turnServer + ":3478"])
+        let turn = RTCIceServer.init(urlStrings: ["turn:" + turnServer + ":3478"], username: turnUsername, credential: turnCredential)
+        let turn2 = RTCIceServer.init(urlStrings: ["turn:" + turnServer + ":3478?transport=tcp"], username: turnUsername, credential: turnCredential)
+
+//        iceServers.append(stunServer)
+        iceServers.append(iceServer)
+        iceServers.append(turn)
+        iceServers.append(turn2)
+
+        self.iceServers = iceServers
+    }
+    
     
     //MARK: - Websocket protocols
     

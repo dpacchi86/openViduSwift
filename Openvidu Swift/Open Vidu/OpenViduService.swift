@@ -141,6 +141,10 @@ struct OpenViduToken: Codable {
     func getJustToken() -> String {
         return token.slice(from: "&token=", to: "&") ?? ""
     }
+    
+    func getQueryParameter(parameter : String) -> String {
+        return token.slice(from: "&\(parameter)=", to: "&") ?? ""
+    }
 }
 
 extension String {

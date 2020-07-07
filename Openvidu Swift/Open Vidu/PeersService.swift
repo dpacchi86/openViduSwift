@@ -11,7 +11,7 @@ import WebRTC
 import Starscream
 
 class PeersService: NSObject {
-
+    
     weak var webSocketListener: WebSocketService?
     
     var localPeer: RTCPeerConnection?
@@ -20,7 +20,7 @@ class PeersService: NSObject {
     var webSocket: WebSocket?
     var localVideoTrack: RTCVideoTrack?
     var localAudioTrack: RTCAudioTrack?
-
+    
     deinit {
         print("Peers Service deallocated")
     }
@@ -46,7 +46,10 @@ class PeersService: NSObject {
         
         let config = RTCConfiguration()
         config.bundlePolicy = .maxCompat
-        config.iceServers = [RTCIceServer(urlStrings: ["stun:stun.l.google.com:19302"])]
+        //        config.iceServers = [RTCIceServer(urlStrings: ["stun:stun.l.google.com:19302"])]
+        if let webSocketListener = webSocketListener {
+            config.iceServers = webSocketListener.iceServers//[RTCIceServer(urlStrings: ["stun:stun.l.google.com:19302"])]
+        }
         config.rtcpMuxPolicy = .require
         
         localPeer = peerConnectionFactory!.peerConnection(with: config, constraints: sdpConstraints, delegate: self)
@@ -94,7 +97,9 @@ class PeersService: NSObject {
         config.keyType = .ECDSA
         config.activeResetSrtpParams = true
         config.sdpSemantics = .unifiedPlan
-        config.iceServers = [RTCIceServer(urlStrings: ["stun:stun.l.google.com:19302"])]
+        if let webSocketListener = webSocketListener {
+            config.iceServers = webSocketListener.iceServers//[RTCIceServer(urlStrings: ["stun:stun.l.google.com:19302"])]
+        }
         
         remoteParticipant.peerConnection = (peerConnectionFactory?.peerConnection(with: config, constraints: sdpConstraints, delegate: self))!
     }
