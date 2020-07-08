@@ -54,12 +54,12 @@ class OpenViduService {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("[OpenVidu] error=\(String(describing: error))")
+                print("⚠️ [OpenVidu] error=\(String(describing: error)), Status Code: \(String(describing: (response as? HTTPURLResponse)?.statusCode))")
                 completion(false, error, room)
                 return
             }
             guard let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 200 else {           // check for http errors
-                print("[OpenVidu] error=\(String(describing: error))")
+                print("⚠️ [OpenVidu] error=\(String(describing: error)), Status Code: \(String(describing: (response as? HTTPURLResponse)?.statusCode))")
                 completion(true, error, room)
                 return
             }
@@ -94,12 +94,12 @@ class OpenViduService {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("[OpenVidu] error=\(String(describing: error))")
+                print("⚠️ [OpenVidu] error=\(String(describing: error)), Status Code: \(String(describing: (response as? HTTPURLResponse)?.statusCode))")
                 completion(nil, false, error)
                 return
             }
             guard let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 200 else {           // check for http errors
-                print("[OpenVidu] error=\(String(describing: error))")
+                print("⚠️ [OpenVidu] error=\(String(describing: error)), Status Code: \(String(describing: (response as? HTTPURLResponse)?.statusCode))")
                 completion(nil, false, error)
                 return
             }
@@ -143,7 +143,10 @@ struct OpenViduToken: Codable {
     }
     
     func getQueryParameter(parameter : String) -> String {
-        return token.slice(from: "&\(parameter)=", to: "&") ?? ""
+        if let value = token.slice(from: "&\(parameter)=", to: "&") {
+            return value
+        }
+        return token.components(separatedBy: "\(parameter)=").last ?? ""
     }
 }
 

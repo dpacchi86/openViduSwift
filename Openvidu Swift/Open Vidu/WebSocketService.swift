@@ -77,7 +77,7 @@ class WebSocketService: WebSocketDelegate {
         let turn = RTCIceServer.init(urlStrings: ["turn:" + turnServer + ":3478"], username: turnUsername, credential: turnCredential)
         let turn2 = RTCIceServer.init(urlStrings: ["turn:" + turnServer + ":3478?transport=tcp"], username: turnUsername, credential: turnCredential)
 
-//        iceServers.append(stunServer)
+        iceServers.append(stunServer)
         iceServers.append(iceServer)
         iceServers.append(turn)
         iceServers.append(turn2)
@@ -311,7 +311,9 @@ class WebSocketService: WebSocketDelegate {
         
         self.remoteParticipantId = params[JSONConstants.Id] as? String
         print("ID: " + remoteParticipantId!)
-        let remoteParticipantPublished = participants[remoteParticipantId!]!
+        guard let remoteParticipantPublished = participants[remoteParticipantId!] else {
+            return
+        }
         let mandatoryConstraints = ["OfferToReceiveAudio": "true", "OfferToReceiveVideo": "true"]
         
         if let streams = params["streams"] as? NSArray, let stream = streams.firstObject as? NSDictionary, let streamId = stream["id"] as? String {

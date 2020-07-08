@@ -13,8 +13,8 @@ class OpenViduVideoVM {
     
     var session = ""
     let username = "OPENVIDUAPP"
-    let secret = "MY_PROT"
-    let baseUrl = "https://cloudlinks.it:4443/api"
+    let secret = "MY_SECRET"
+    let baseUrl = "https://demos.openvidu.io"
         
     var partecipantName = ""
     

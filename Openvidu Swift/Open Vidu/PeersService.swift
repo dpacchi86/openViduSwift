@@ -46,9 +46,9 @@ class PeersService: NSObject {
         
         let config = RTCConfiguration()
         config.bundlePolicy = .maxCompat
-        //        config.iceServers = [RTCIceServer(urlStrings: ["stun:stun.l.google.com:19302"])]
+        //config.iceServers = [RTCIceServer(urlStrings: ["stun:stun.l.google.com:19302"])]
         if let webSocketListener = webSocketListener {
-            config.iceServers = webSocketListener.iceServers//[RTCIceServer(urlStrings: ["stun:stun.l.google.com:19302"])]
+            config.iceServers = webSocketListener.iceServers
         }
         config.rtcpMuxPolicy = .require
         
@@ -98,7 +98,7 @@ class PeersService: NSObject {
         config.activeResetSrtpParams = true
         config.sdpSemantics = .unifiedPlan
         if let webSocketListener = webSocketListener {
-            config.iceServers = webSocketListener.iceServers//[RTCIceServer(urlStrings: ["stun:stun.l.google.com:19302"])]
+            config.iceServers = webSocketListener.iceServers
         }
         
         remoteParticipant.peerConnection = (peerConnectionFactory?.peerConnection(with: config, constraints: sdpConstraints, delegate: self))!
