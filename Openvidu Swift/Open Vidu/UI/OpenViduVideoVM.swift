@@ -12,11 +12,11 @@ import WebRTC
 class OpenViduVideoVM {
     
     var session = ""
-    let username = "OPENVIDUAPP"
-    let secret = "MY_SECRET"
-    let baseUrl = "https://demos.openvidu.io/api"
+    var username = "OPENVIDUAPP"
+    var secret = "MY_SECRET"
+    var baseUrl = "https://demos.openvidu.io/api"
         
-    var partecipantName = ""
+    var participantName = ""
     
     var participants = [RemoteParticipant]()
     var socketService : WebSocketService?
@@ -81,7 +81,7 @@ class OpenViduVideoVM {
     //MARK: - Create socket
     
     private func createSocket(token: OpenViduToken, session: String) {
-        socketService = WebSocketService(baseUrl: token.token, sessionName: session, participantName: partecipantName, peersManager: self.peersService, openViduToken: token)
+        socketService = WebSocketService(baseUrl: token.token, sessionName: session, participantName: participantName, peersManager: self.peersService, openViduToken: token)
         peersService.webSocketListener = socketService
         peersService.start()
         addCallBacks()
@@ -101,7 +101,7 @@ class OpenViduVideoVM {
             }
         }
         
-        socketService?.onPartecipantsChanged = {[weak self] (participants) in
+        socketService?.onParticipantsChanged = {[weak self] (participants) in
             self?.participants = participants.filter{$0.videoTrack != nil}
             DispatchQueue.main.async {[weak self] in
                 self?.onUpdate?()

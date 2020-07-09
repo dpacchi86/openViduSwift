@@ -32,7 +32,7 @@ class WebSocketService: WebSocketDelegate {
     var iceServers = [RTCIceServer]()
     
     var onSocketConnected : (()->())?
-    var onPartecipantsChanged : (([RemoteParticipant])->())?
+    var onParticipantsChanged : (([RemoteParticipant])->())?
     var onSocketDisconnected : (()->())?
     
     //MARK: - Init
@@ -210,7 +210,7 @@ class WebSocketService: WebSocketDelegate {
         }
     }
     
-    //MARK: - Partecipants
+    //MARK: - Participants
     
     func handleMethod(json: Dictionary<String,Any>) {
         if json[JSONConstants.Params] != nil {
@@ -341,7 +341,7 @@ class WebSocketService: WebSocketDelegate {
         let participantId = params["connectionId"] as! String
         participants[participantId]!.peerConnection!.close()
         participants.removeValue(forKey: participantId)
-        onPartecipantsChanged?(getAllParticipants())
+        onParticipantsChanged?(getAllParticipants())
     }
     
     //MARK: - Ice Candidate
@@ -379,7 +379,7 @@ class WebSocketService: WebSocketDelegate {
         if (localPeer!.remoteDescription != nil) {
             participants[remoteParticipantId!]!.peerConnection!.setRemoteDescription(sessionDescription, completionHandler: {[weak self] (error) in
                 if self != nil {
-                    self!.onPartecipantsChanged?(self?.getAllParticipants() ?? [])
+                    self!.onParticipantsChanged?(self?.getAllParticipants() ?? [])
                 }
             })
         } else {

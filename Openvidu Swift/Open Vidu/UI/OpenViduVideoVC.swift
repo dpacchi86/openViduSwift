@@ -195,7 +195,7 @@ extension OpenViduVideoVC : UICollectionViewDelegate, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OpenViduPartecipantCell", for: indexPath) as! OpenViduPartecipantCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OpenViduParticipantCell", for: indexPath) as! OpenViduParticipantCell
         cell.loadWith(participant: viewModel.participants[indexPath.row])
         return cell
     }

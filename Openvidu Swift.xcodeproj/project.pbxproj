@@ -13,7 +13,7 @@
 		6F1980A724B32B9100BECBD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F1980A524B32B9100BECBD3 /* Main.storyboard */; };
 		6F1980A924B32B9500BECBD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F1980A824B32B9500BECBD3 /* Assets.xcassets */; };
 		6F1980AC24B32B9500BECBD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F1980AA24B32B9500BECBD3 /* LaunchScreen.storyboard */; };
-		6F1980BD24B32BB800BECBD3 /* OpenViduPartecipantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1980B524B32BB800BECBD3 /* OpenViduPartecipantCell.swift */; };
+		6F1980BD24B32BB800BECBD3 /* OpenViduParticipantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1980B524B32BB800BECBD3 /* OpenViduParticipantCell.swift */; };
 		6F1980BE24B32BB800BECBD3 /* OpenViduVideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1980B624B32BB800BECBD3 /* OpenViduVideoVC.swift */; };
 		6F1980BF24B32BB800BECBD3 /* OpenViduVideoVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1980B724B32BB800BECBD3 /* OpenViduVideoVM.swift */; };
 		6F1980C024B32BB800BECBD3 /* RemoteParticipant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1980B824B32BB800BECBD3 /* RemoteParticipant.swift */; };
@@ -22,6 +22,7 @@
 		6F1980C324B32BB800BECBD3 /* OpenViduService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1980BB24B32BB800BECBD3 /* OpenViduService.swift */; };
 		6F1980C424B32BB800BECBD3 /* WebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1980BC24B32BB800BECBD3 /* WebSocketService.swift */; };
 		6F1980C624B32E1000BECBD3 /* Openvidu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F1980C524B32E1000BECBD3 /* Openvidu.storyboard */; };
+		6F75AC1624B74517008872A7 /* OpenVidu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F75AC1524B74517008872A7 /* OpenVidu.swift */; };
 		CEB49817D708048864E5BAF0 /* Pods_Openvidu_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1845C7D5FFA8ABA3FE2B803 /* Pods_Openvidu_Swift.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,7 +36,7 @@
 		6F1980A824B32B9500BECBD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F1980AB24B32B9500BECBD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F1980AD24B32B9500BECBD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6F1980B524B32BB800BECBD3 /* OpenViduPartecipantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenViduPartecipantCell.swift; sourceTree = "<group>"; };
+		6F1980B524B32BB800BECBD3 /* OpenViduParticipantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenViduParticipantCell.swift; sourceTree = "<group>"; };
 		6F1980B624B32BB800BECBD3 /* OpenViduVideoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenViduVideoVC.swift; sourceTree = "<group>"; };
 		6F1980B724B32BB800BECBD3 /* OpenViduVideoVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenViduVideoVM.swift; sourceTree = "<group>"; };
 		6F1980B824B32BB800BECBD3 /* RemoteParticipant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteParticipant.swift; sourceTree = "<group>"; };
@@ -44,6 +45,7 @@
 		6F1980BB24B32BB800BECBD3 /* OpenViduService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenViduService.swift; sourceTree = "<group>"; };
 		6F1980BC24B32BB800BECBD3 /* WebSocketService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocketService.swift; sourceTree = "<group>"; };
 		6F1980C524B32E1000BECBD3 /* Openvidu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Openvidu.storyboard; sourceTree = "<group>"; };
+		6F75AC1524B74517008872A7 /* OpenVidu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenVidu.swift; sourceTree = "<group>"; };
 		D9D881654A768AD67387E33E /* Pods-Openvidu Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Openvidu Swift.debug.xcconfig"; path = "Target Support Files/Pods-Openvidu Swift/Pods-Openvidu Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		E1845C7D5FFA8ABA3FE2B803 /* Pods_Openvidu_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Openvidu_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -105,6 +107,7 @@
 		6F1980B324B32BB800BECBD3 /* Open Vidu */ = {
 			isa = PBXGroup;
 			children = (
+				6F75AC1524B74517008872A7 /* OpenVidu.swift */,
 				6F1980B424B32BB800BECBD3 /* UI */,
 				6F1980B824B32BB800BECBD3 /* RemoteParticipant.swift */,
 				6F1980B924B32BB800BECBD3 /* JSONConstants.swift */,
@@ -118,7 +121,7 @@
 		6F1980B424B32BB800BECBD3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				6F1980B524B32BB800BECBD3 /* OpenViduPartecipantCell.swift */,
+				6F1980B524B32BB800BECBD3 /* OpenViduParticipantCell.swift */,
 				6F1980B624B32BB800BECBD3 /* OpenViduVideoVC.swift */,
 				6F1980B724B32BB800BECBD3 /* OpenViduVideoVM.swift */,
 				6F1980C524B32E1000BECBD3 /* Openvidu.storyboard */,
@@ -253,7 +256,7 @@
 				6F1980BE24B32BB800BECBD3 /* OpenViduVideoVC.swift in Sources */,
 				6F1980A424B32B9100BECBD3 /* ViewController.swift in Sources */,
 				6F1980C024B32BB800BECBD3 /* RemoteParticipant.swift in Sources */,
-				6F1980BD24B32BB800BECBD3 /* OpenViduPartecipantCell.swift in Sources */,
+				6F1980BD24B32BB800BECBD3 /* OpenViduParticipantCell.swift in Sources */,
 				6F1980A024B32B9100BECBD3 /* AppDelegate.swift in Sources */,
 				6F1980C324B32BB800BECBD3 /* OpenViduService.swift in Sources */,
 				6F1980C224B32BB800BECBD3 /* PeersService.swift in Sources */,
@@ -261,6 +264,7 @@
 				6F1980C124B32BB800BECBD3 /* JSONConstants.swift in Sources */,
 				6F1980BF24B32BB800BECBD3 /* OpenViduVideoVM.swift in Sources */,
 				6F1980A224B32B9100BECBD3 /* SceneDelegate.swift in Sources */,
+				6F75AC1624B74517008872A7 /* OpenVidu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

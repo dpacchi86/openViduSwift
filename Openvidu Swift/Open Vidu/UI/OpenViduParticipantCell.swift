@@ -1,5 +1,5 @@
 //
-//  OpenViduPartecipantCell.swift
+//  OpenViduParticipantCell.swift
 //  WebRTCapp
 //
 //  Created by Dario Pacchi on 16/06/2020.
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import WebRTC
 
-class OpenViduPartecipantCell: UICollectionViewCell {
+class OpenViduParticipantCell: UICollectionViewCell {
     
     @IBOutlet weak var videoView: RTCMTLVideoView!
     @IBOutlet weak var partecipantLabel: UILabel!

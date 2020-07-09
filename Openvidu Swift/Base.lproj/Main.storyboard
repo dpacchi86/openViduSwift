@@ -47,8 +47,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C43-do-swA">
-                                <rect key="frame" x="315" y="518" width="59" height="30"/>
-                                <state key="normal" title="Connect"/>
+                                <rect key="frame" x="344" y="507" width="30" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="Join"/>
                                 <connections>
                                     <action selector="connectTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ajv-rN-PgR"/>
                                 </connections>
@@ -58,7 +59,7 @@
                         <constraints>
                             <constraint firstItem="7Fu-ex-vsc" firstAttribute="trailing" secondItem="47D-fI-hkI" secondAttribute="trailing" id="04U-ls-OB8"/>
                             <constraint firstItem="47D-fI-hkI" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" id="0EK-0c-HTZ"/>
-                            <constraint firstItem="C43-do-swA" firstAttribute="top" secondItem="zKS-Mz-4oH" secondAttribute="bottom" constant="31" id="3lf-Af-NgI"/>
+                            <constraint firstItem="C43-do-swA" firstAttribute="top" secondItem="zKS-Mz-4oH" secondAttribute="bottom" constant="20" id="3lf-Af-NgI"/>
                             <constraint firstItem="7Fu-ex-vsc" firstAttribute="top" secondItem="kIj-ur-4LP" secondAttribute="bottom" constant="11" id="8mM-49-JbQ"/>
                             <constraint firstItem="zKS-Mz-4oH" firstAttribute="top" secondItem="guy-ph-RzS" secondAttribute="bottom" constant="11" id="GjP-Lj-yKx"/>
                             <constraint firstItem="guy-ph-RzS" firstAttribute="top" secondItem="7Fu-ex-vsc" secondAttribute="bottom" constant="14" id="MJf-X9-C3T"/>

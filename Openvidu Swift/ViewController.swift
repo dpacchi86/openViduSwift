@@ -22,14 +22,13 @@ class ViewController: UIViewController {
 
     @IBAction func connectTapped(_ sender: Any) {
         
-        let storyboard = UIStoryboard(name: "Openvidu", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "OpenViduVideoVC") as? OpenViduVideoVC, let username = usernameTextField.text, let session = sessionIdTextField.text else {
+        guard let username = usernameTextField.text, let session = sessionIdTextField.text else {
             return
         }
-        vc.modalPresentationStyle = .currentContext
 
-        vc.viewModel.partecipantName = username
-        vc.viewModel.session = session
+        guard let vc = OpenVidu.loadVideoController(participantName: username, sessionId: session) else {
+            return
+        }
         
         present(vc, animated: true, completion: nil)
         
